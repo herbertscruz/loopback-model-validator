@@ -1,0 +1,116 @@
+{
+  "name": "TestLab",
+  "properties": {
+    "length": {
+      "type": "string",
+      "validators": {
+        "length": 3
+      },
+      "filters": {
+        "upper": true
+      }
+    },
+    "is": {
+      "type": "string",
+      "validators": {
+        "is": 3
+      },
+      "filters": {
+        "upper": true
+      }
+    },
+    "min": {
+      "type": "string",
+      "validators": {
+        "min": 3
+      },
+      "filters": {
+        "trim": true
+      }
+    },
+    "max": {
+      "type": "string",
+      "validators": {
+        "max": 10
+      },
+      "filters": {
+        "trim": true
+      }
+    },
+    "pattern": {
+      "type": "string",
+      "validators": {
+        "pattern": {
+          "exp": "^(Test - ).*",
+          "flags": "i"
+        }
+      }
+    },
+    "email": {
+      "type": "string",
+      "validators": {
+        "email": true
+      },
+      "filters": {
+        "lower": true
+      }
+    },
+    "urlIp": {
+      "type": "string",
+      "validators": {
+        "urlIp": true
+      },
+      "filters": {
+        "lower": true
+      }
+    },
+    "cpf": {
+      "type": "string",
+      "validators": {
+        "cpf": true
+      },
+      "filters": {
+        "replace": {
+          "pattern": {
+            "type": "regex",
+            "exp": "[^\\d]",
+            "flags": "g"
+          }
+        }
+      }
+    },
+    "cnpj": {
+      "type": "string",
+      "validators": {
+        "cnpj": true
+      },
+      "filters": {
+        "replace": {
+          "pattern": {
+            "type": "regex",
+            "exp": "[^\\d]",
+            "flags": "g"
+          }
+        }
+      }
+    },
+    "unique": {
+      "type": "string",
+      "validators": {
+        "unique": true
+      }
+    },
+    "inclusionOf": {
+      "type": "string",
+      "validators": {
+        "inclusionOf": {
+          "in": ["A", "B"]
+        }
+      }
+    }
+  },
+  "mixins": {
+    "Validators" : true,
+    "Filters" : true
+  }
+}

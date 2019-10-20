@@ -52,11 +52,11 @@ module.exports = function(Model) {
         },
         // Brazil validations
         cpf: {
-          isInvalid: value => value && !cpf.isInvalid(cpf.strip(value)),
+          isInvalid: value => value && !cpf.isValid(cpf.strip(value)),
           message: () => 'Invalid CPF',
         },
         cnpj: {
-          isInvalid: value => value && !cnpj.isInvalid(cnpj.strip(value)),
+          isInvalid: value => value && !cnpj.isValid(cnpj.strip(value)),
           message: () => 'Invalid CNPJ',
         },
       };
