@@ -1,6 +1,6 @@
 # Loopback model validator
 
-This package allows you to add validation to model definition. Addressing the absence of this implementation as seen in the (Validations)[https://loopback.io/doc/en/lb3/Model-definition-JSON-file.html#validations] session of (Model definition JSON file)[https://loopback.io/doc/en/lb3/Model-definition-JSON-file.html].
+This package allows you to add validation to model definition. Addressing the absence of this implementation as seen in the [Validations](https://loopback.io/doc/en/lb3/Model-definition-JSON-file.html#validations) session of [Model definition JSON file](https://loopback.io/doc/en/lb3/Model-definition-JSON-file.html).
 
 To avoid conflict with future implementations by the Loopback team, I proposed a new and simple structure in defining model properties.
 
