@@ -22,17 +22,17 @@ In defining the model, use:
 
 ## Validations supported
 
-| Name                  | Type          | Description   | Example       |
-| --------------------- | ------------- | ------------- | ------------- |
-| **length** and **is** | string        |               |               |
-| **min**               | string        |               |               |
-| **max**               | string        |               |               |
-| **pattern**           | string        |               |               |
-| **email**             | string        |               |               |
-| **urlIp**             | string        |               |               |
-| **cpf**               | string        |               |               |
-| **cnpj**              | string        |               |               |
-| **unique**            | string        |               |               |
+| Name                | Type          | Description   | Example       |
+| ------------------- | ------------- | ------------- | ------------- |
+| **length** / **is** | string        |               |               |
+| **min**             | string        |               |               |
+| **max**             | string        |               |               |
+| **pattern**         | string        |               |               |
+| **email**           | string        |               |               |
+| **urlIp**           | string        |               |               |
+| **cpf**             | string        |               |               |
+| **cnpj**            | string        |               |               |
+| **unique**          | string        |               |               |
 
 # Filters
 
