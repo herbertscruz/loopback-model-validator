@@ -104,7 +104,9 @@
       "type": "string",
       "validators": {
         "inclusionOf": {
-          "in": ["A", "B"]
+          "in": ["A", "B"],
+          "allowBlank": true,
+          "allowNull": true
         }
       }
     }

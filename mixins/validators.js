@@ -2,6 +2,7 @@
 const isEmpty = require('lodash/isEmpty');
 const has = require('lodash/has');
 const get = require('lodash/get');
+const set = require('lodash/set');
 const first = require('lodash/first');
 const upperFirst = require('lodash/upperFirst');
 const {isEmail, isURL, isIP} = require('validator');
@@ -14,34 +15,6 @@ module.exports = function(Model) {
     const properties = Model.definition.properties;
     Object.keys(properties).forEach(property => {
       const validatorList = {
-        length: {
-          isInvalid: (value, length) => value && value.length !== length,
-          message: length => util.format('Must be %s characters', length),
-        },
-        is: {
-          isInvalid: (value, is) => value && value.length !== is,
-          message: is => util.format('Must be %s characters', is),
-        },
-        min: {
-          isInvalid: (value, min) => value && value.length < min,
-          message: min => util.format('Must be at least %s characters', min),
-        },
-        max: {
-          isInvalid: (value, max) => value && value.length > max,
-          message: max => util.format('Must be at most %s characters', max),
-        },
-        pattern: {
-          isInvalid: (value, options) => {
-            let pattern = get(options, 'exp');
-            if (!pattern) throw new Error(
-              'The "exp" option is required for "filters.pattern"'
-            );
-            const flags = get(options, 'flags');
-            pattern = new RegExp(pattern, flags);
-            return !pattern.test(value);
-          },
-          message: () => 'Invalid pattern',
-        },
         email: {
           isInvalid: value => value && !isEmail(value),
           message: () => 'Invalid email',
@@ -92,6 +65,33 @@ module.exports = function(Model) {
                   });
                 }
               }
+            });
+          } else if (['length', 'is', 'min', 'max'].includes(validator)) {
+            const options = get(validators, validator);
+            const opt = {allowBlank: true, allowNull: true};
+            switch(validator) {
+              case 'length':
+              case 'is':
+                set(opt, 'is', options);
+                break;
+              case 'min':
+                set(opt, 'min', options);
+                break;
+              case 'max':
+                set(opt, 'max', options);
+                break;
+            }
+            Model.validatesLengthOf(property, opt);
+          } else if (validator === 'pattern') {
+            const options = get(validators, validator);
+            let pattern = get(options, 'exp');
+            if (!pattern) throw new Error(
+              'The "exp" option is required for "filters.pattern"'
+            );
+            const flags = get(options, 'flags');
+            pattern = new RegExp(pattern, flags);
+            Model.validatesFormatOf(property, {
+              with: pattern, allowBlank: true, allowNull: true
             });
           } else {
             const method = `validates${upperFirst(validator)}`;

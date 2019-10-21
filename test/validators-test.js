@@ -1,6 +1,7 @@
 const assert = require('chai').assert;
 const server = require('./loopback/server/server');
 const request = require('supertest')(server);
+const omit = require('lodash/omit');
 
 describe('mixins/validators.js', () => {
   this.getUnique = () => {
@@ -30,6 +31,18 @@ describe('mixins/validators.js', () => {
       .send(input)
       .then(response => {
         assert.isOk(response);
+        assert.property(response.body, 'id');
+        assert.property(response.body, 'length');
+        assert.property(response.body, 'is');
+        assert.property(response.body, 'min');
+        assert.property(response.body, 'max');
+        assert.property(response.body, 'pattern');
+        assert.property(response.body, 'email');
+        assert.property(response.body, 'urlIp');
+        assert.property(response.body, 'cpf');
+        assert.property(response.body, 'cnpj');
+        assert.property(response.body, 'unique');
+        assert.property(response.body, 'inclusionOf');
       });
   });
 
@@ -61,6 +74,21 @@ describe('mixins/validators.js', () => {
         assert.property(response.body.error.details.messages, 'cnpj');
         assert.property(response.body.error.details.messages, 'unique');
         assert.property(response.body.error.details.messages, 'inclusionOf');
+      });
+  });
+
+  it('should return with applied validators', async () => {
+    let data = this.input();
+    data = omit(data, [
+      'length', 'is', 'min', 'max', 'pattern', 'email',
+      'urlIp', 'cpf', 'cnpj', 'unique', 'inclusionOf'
+    ]);
+    return request
+      .post('/api/TestLabs')
+      .send(data)
+      .then(response => {
+        assert.isOk(response);
+        assert.property(response.body, 'id');
       });
   });
 });

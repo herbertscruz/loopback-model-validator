@@ -6,7 +6,7 @@ const cnpj = require('@fnando/cnpj/dist/node');
 
 describe('mixins/filters.js', () => {
   this.getUnique = () => {
-    if (!this.unique) this.unique = 0;
+    if (!this.unique) this.unique = 1000;
     return ++this.unique;
   };
   this.input = () => {
