@@ -6,6 +6,39 @@ To avoid conflict with future implementations by the Loopback team, I proposed a
 
 This package also defines the possibility of using data filters that enable cleaner data.
 
+# Installation
+
+[Reference mixins in server/model-config.js](https://loopback.io/doc/en/lb3/Defining-mixins.html#reference-mixins-in-model-configjs)
+
+```
+{
+  "_meta": {
+    ...
+    "mixins": [
+      ...
+      "../node_modules/loopback-model-validator/mixins"
+    ]
+  }
+}
+```
+[Enable a model with mixins](https://loopback.io/doc/en/lb3/Defining-mixins.html#enable-a-model-with-mixins)
+
+```
+{
+  "name": "note",
+  "base": "PersistedModel",
+  ...
+  "mixins": {
+    "Validators" : true,
+    "Filters" : true
+  }
+  "properties": {
+    ...
+  },
+  ...
+}
+```
+
 # Validators
 
 In defining the model, use:
@@ -19,6 +52,7 @@ In defining the model, use:
   }
 }
 ```
+[More examples](https://github.com/herbertscruz/loopback-model-validator/blob/master/test/loopback/common/models/test-lab.json) of validations.
 
 ## Validations supported
 
@@ -69,6 +103,7 @@ In defining the model, use:
   }
 }
 ```
+[More examples](https://github.com/herbertscruz/loopback-model-validator/blob/master/test/loopback/common/models/test-lab.json) of filters.
 
 ## Filters supported
 

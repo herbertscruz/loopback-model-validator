@@ -1,7 +1,14 @@
 {
   "name": "loopback-model-validator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Extra validators and filters for loopback models",
+  "keywords": [
+    "strongLoop",
+    "loopBack",
+    "model",
+    "validator",
+    "filter"
+  ],
   "main": "index.js",
   "directories": {
     "lib": "lib",
@@ -13,8 +20,16 @@
     "test": "mocha -t 10000",
     "posttest": "npm run lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/herbertscruz/loopback-model-validator.git"
+  },
   "author": "Herberts Cruz <herbertscruz@gmail.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/herbertscruz/loopback-model-validator/issues"
+  },
+  "homepage": "https://github.com/herbertscruz/loopback-model-validator#readme",
   "dependencies": {
     "@fnando/cnpj": "^0.1.1",
     "@fnando/cpf": "^0.1.1",
