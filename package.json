@@ -11,7 +11,7 @@
   ],
   "main": "index.js",
   "directories": {
-    "lib": "lib",
+    "lib": "mixins",
     "test": "test"
   },
   "scripts": {
